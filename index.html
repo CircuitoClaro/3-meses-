@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#060714">
+  <title>🌌 ¡Felices 3 Meses, Tamy! ❤️ | Jose & Tamy | Nuestra Galaxia de Amor 💫</title>
+  
+  <!-- Fuentes Elegantes & Cósmicas de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Dancing+Script:wght@600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <!-- ============================================================
+       PANTALLA DE BIENVENIDA / ENTRADA HIPERESPACIAL
+       ============================================================ -->
+  <div id="intro-screen" class="intro-screen">
+    <div class="stars-intro-bg"></div>
+    <div class="intro-card glass-panel">
+      <div class="intro-galaxy-icon">
+        <div class="galaxy-core-pulse"></div>
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <span class="center-star">🪐</span>
+      </div>
+
+      <div class="intro-badge">✨ 27 • ¡Felices 3 Meses Juntos! ✨</div>
+      <h1 class="intro-title">Para Tamy, Mi Universo Entero ❤️</h1>
+      
+      <div class="intro-message-box">
+        <p class="intro-quote">
+          «En un universo con más de 2 billones de galaxias y trillones de estrellas... coincidir contigo aquel 27 fue el milagro más hermoso de mi vida.»
+        </p>
+        <p class="intro-text">
+          Hoy celebramos <strong>3 meses de amor puro (92 días mágicos)</strong>. Cada momento a tu lado ha sido un viaje cósmico lleno de ternura, risas y la certeza de que mi lugar favorito en todo el cosmos siempre será a tu lado.
+        </p>
+        <p class="intro-subtext">
+          🎧 <strong>Ponte tus audífonos</strong>, sube el volumen y acompáñame a explorar esta galaxia 3D creada especialmente para ti, donde cada planeta y cada constelación guarda un pedacito de nuestro amor...
+        </p>
+      </div>
+
+      <button id="start-btn" class="start-btn cosmic-pulse-btn">
+        <span class="btn-shine"></span>
+        <span class="btn-content">
+          <span class="btn-icon">🚀</span>
+          <span>Despegar hacia Nuestra Galaxia & Celebrar 3 Meses</span>
+          <span class="btn-music-tag">🎵</span>
+        </span>
+      </button>
+
+      <div class="intro-author">Creado con todo el amor de mi corazón por Jose para Tamy, hoy y por toda la eternidad ❤️</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CANVAS THREE.JS DEL UNIVERSO 3D
+       ============================================================ -->
+  <canvas id="universeCanvas"></canvas>
+
+  <!-- Efecto de viñeta y polvo espacial -->
+  <div class="space-vignette"></div>
+
+  <!-- ============================================================
+       ENCABEZADO CÓSMICO HUD & CONTADOR EN VIVO
+       ============================================================ -->
+  <header class="cosmic-header" id="cosmic-header">
+    <div class="cosmic-badge">
+      <span class="pulse-dot"></span>
+      <span>🪐 Jose & Tamy • 3 Meses en Órbita</span>
+      <span class="pulse-dot"></span>
+    </div>
+
+    <h1 class="cosmic-title">Nuestra Galaxia de Amor 💫</h1>
+    <p class="cosmic-subtitle">«92 días iluminando mi existencia • 3 meses amándote hasta el infinito» ❤️</p>
+    
+    <!-- Contador Cósmico en Tiempo Real -->
+    <div class="cosmic-counter-badge" id="cosmic-counter">
+      <div class="counter-label">
+        <span class="icon">✨</span>
+        <span>Tiempo amándote desde nuestro inolvidable 27 de Julio:</span>
+      </div>
+      
+      <div class="counter-units">
+        <div class="unit">
+          <span id="days" class="number">92</span>
+          <small>Días</small>
+        </div>
+        <div class="unit-separator">:</div>
+        <div class="unit">
+          <span id="hours" class="number">00</span>
+          <small>Horas</small>
+        </div>
+        <div class="unit-separator">:</div>
+        <div class="unit">
+          <span id="minutes" class="number">00</span>
+          <small>Minutos</small>
+        </div>
+        <div class="unit-separator">:</div>
+        <div class="unit">
+          <span id="seconds" class="number">00</span>
+          <small>Segundos</small>
+        </div>
+      </div>
+
+      <div class="cosmic-stat-strip">
+        <span>🌍 <strong>~240M km</strong> viajados juntos alrededor del sol</span>
+        <span class="dot-sep">•</span>
+        <span>💖 <strong>+9,000,000</strong> de latidos por ti</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       AYUDA Y CONTROLES DE NAVEGACIÓN 3D
+       ============================================================ -->
+  <div class="controls-hint" id="controls-hint">
+    <span class="hint-icon">👆</span>
+    <span class="hint-text">Gira la galaxia con el ratón o tu dedo • Haz clic en los planetas para ver recuerdos</span>
+  </div>
+
+  <!-- ============================================================
+       BARRA DE ACCIONES FLOTANTE (DOCK CÓSMICO)
+       ============================================================ -->
+  <nav class="cosmic-dock" aria-label="Controles del universo">
+    <button id="open-wish-btn" class="dock-btn" title="Pedir un deseo a una estrella fugaz">
+      <span class="dock-icon">🌠</span>
+      <span class="dock-text">Deseo Cósmico</span>
+    </button>
+    <button id="trigger-meteor-btn" class="dock-btn" title="Lanzar lluvia de estrellas fugaces de amor">
+      <span class="dock-icon">✨</span>
+      <span class="dock-text">Lluvia de Estrellas</span>
+    </button>
+    <button id="open-letter-btn" class="dock-btn highlight-btn" title="Abrir la carta de amor por los 3 meses">
+      <span class="dock-icon">💌</span>
+      <span class="dock-text">Carta 3 Meses</span>
+    </button>
+    <button id="open-reasons-btn" class="dock-btn" title="90 razones para amarte (una por cada día)">
+      <span class="dock-icon">💖</span>
+      <span class="dock-text">90 Razones</span>
+    </button>
+    <button id="open-constellations-btn" class="dock-btn" title="Ver las 3 constelaciones de nuestros 3 meses">
+      <span class="dock-icon">🌌</span>
+      <span class="dock-text">3 Constelaciones</span>
+    </button>
+    <button id="tour-btn" class="dock-btn" title="Iniciar viaje guiado por todos los planetas de recuerdos">
+      <span class="dock-icon">🔭</span>
+      <span class="dock-text">Tour Guiado</span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       MODAL 1: HOLOGRAMA POLAROID DE RECUERDO (PLANETA INSPECCIONADO)
+       ============================================================ -->
+  <div id="memory-modal" class="custom-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="memory-backdrop"></div>
+    <div class="modal-card memory-card glass-panel">
+      <button id="close-memory-btn" class="close-modal-btn" aria-label="Cerrar">&times;</button>
+      
+      <div class="hologram-polaroid">
+        <div class="planet-badge" id="modal-planet-badge">🪐 Planeta de Recuerdos #1</div>
+        
+        <div class="polaroid-visual">
+          <img id="modal-memory-img" src="0.png" alt="Recuerdo Cósmico de Jose y Tamy">
+          <div class="hologram-scanline"></div>
+          <div class="polaroid-sparkles"></div>
+        </div>
+
+        <div class="polaroid-details">
+          <h2 id="modal-memory-title" class="polaroid-title">Donde Todo Empezó (Día 27) ❤️</h2>
+          <p id="modal-memory-desc" class="polaroid-desc">Aquel hermoso 27 de Julio comenzó nuestra historia.</p>
+        </div>
+      </div>
+
+      <div class="memory-modal-footer">
+        <button id="modal-prev-memory" class="mini-nav-btn">◀ Anterior</button>
+        <button id="send-cosmic-heart-btn" class="heart-pulse-btn">
+          <span>💖 Enviar Amor Cósmico</span>
+        </button>
+        <button id="modal-next-memory" class="mini-nav-btn">Siguiente ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 2: PEDIR DESEO CÓSMICO (LANZAR COMETA A LAS ESTRELLAS)
+       ============================================================ -->
+  <div id="wish-modal" class="custom-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="wish-backdrop"></div>
+    <div class="modal-card wish-card glass-panel">
+      <button id="close-wish-btn" class="close-modal-btn" aria-label="Cerrar">&times;</button>
+      
+      <div class="card-badge">🌠 Pide un Deseo a las Estrellas</div>
+      <h2 class="modal-heading">Lanza un Cometa al Corazón de la Galaxia 💫</h2>
+      <p class="modal-desc">Escribe lo que sueñas para nuestro amor en estos 3 meses y los que vendrán. Tu cometa cruzará la galaxia y dejará un rastro estelar infinito.</p>
+      
+      <div class="comet-color-picker">
+        <label>Elige la estela de tu cometa:</label>
+        <div class="color-options">
+          <button type="button" class="color-dot active" data-color="gold" style="--c: #ffd166;" title="Dorado Supernova"></button>
+          <button type="button" class="color-dot" data-color="rose" style="--c: #ff758f;" title="Rosa Nebulosa"></button>
+          <button type="button" class="color-dot" data-color="cyan" style="--c: #4cc9f0;" title="Cian Andrómeda"></button>
+          <button type="button" class="color-dot" data-color="violet" style="--c: #c77dff;" title="Violeta Cósmico"></button>
+        </div>
+      </div>
+
+      <div class="wish-input-wrapper">
+        <textarea id="custom-wish-input" maxlength="150" placeholder="Escribe aquí tu deseo cósmico para nuestros 3 meses juntos, mi Tamy... ✨"></textarea>
+      </div>
+
+      <div class="quick-wishes">
+        <span class="quick-label">O elige un deseo especial:</span>
+        <div class="quick-tags">
+          <button type="button" class="wish-tag">Seguir orbitando juntos por toda la eternidad ❤️</button>
+          <button type="button" class="wish-tag">Que este sea el 3er de infinitos meses felices 💕</button>
+          <button type="button" class="wish-tag">Viajar por todo el planeta de tu mano ✈️🌍</button>
+          <button type="button" class="wish-tag">Hacerte sonreír cada segundo de mi vida 👑✨</button>
+          <button type="button" class="wish-tag">Construir juntos todos nuestros sueños 🌌</button>
+        </div>
+      </div>
+
+      <button id="release-comet-btn" class="primary-cosmic-btn">
+        <span>🌠 Lanzar Cometa al Universo ✨</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 3: CÁPSULA INTERESTELAR (CARTA DE AMOR POR LOS 3 MESES)
+       ============================================================ -->
+  <div id="letter-modal" class="custom-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="letter-backdrop"></div>
+    <div class="modal-card letter-card glass-panel parchment-cosmic">
+      <button id="close-letter-btn" class="close-modal-btn" aria-label="Cerrar">&times;</button>
+      
+      <div class="cosmic-wax-seal">
+        <div class="seal-glow"></div>
+        <span>💖</span>
+      </div>
+
+      <div class="letter-tag">Cápsula Interestelar • De Jose para Tamy 📜🌌</div>
+      <h2 class="letter-title">Mi Tamy, Dueña de Mi Universo... 💕</h2>
+      
+      <div class="letter-scroll-body">
+        <p class="letter-p">
+          Hoy celebramos <strong>3 meses de amor puro (92 días inolvidables)</strong> desde aquel 27 de Julio en que nuestras vidas se encontraron. Y si algo tengo completamente claro en este vasto universo, es que coincidir contigo no fue casualidad: fue el milagro más hermoso que me pudo pasar.
+        </p>
+        <p class="letter-p">
+          En estos tres meses me has enseñado lo maravilloso que es querer con el alma, reír con el corazón abierto y sentir la tranquilidad absoluta de saber que encontré a mi persona indicada. Cada mensaje tuyo ilumina mi día, cada sonrisa tuya apaga cualquier preocupación y cada abrazo tuyo me hace sentir exactamente en casa.
+        </p>
+        <p class="letter-p">
+          Esta noche encendí cada estrella, cada planeta y cada constelación de esta galaxia pensando en ti, en nosotros y en la historia tan linda que estamos construyendo paso a paso. No hay distancia, tiempo ni galaxia en la que no elegiría buscarte una y otra vez.
+        </p>
+        <p class="letter-p letter-highlight">
+          Gracias por estos 3 meses haciéndome el hombre más feliz y enamorado del mundo. Gracias por ser mi estrella polar, mi paz y mi mayor motivación. ¡Felices 3 meses, mi princesa hermosa! Te amo con cada partícula de mi ser, hoy, mañana y hasta el confín del universo. ❤️
+        </p>
+      </div>
+
+      <div class="letter-footer">
+        <button id="letter-celebrate-btn" class="primary-cosmic-btn celebrate-supernova-btn">
+          ✨ ¡Desatar Supernova de Amor en la Galaxia! 🎆🪐
+        </button>
+        <div class="letter-signature">
+          <span>Eternamente tuyo en este y todos los universos,</span>
+          <strong>Jose ❤️ Con todo mi amor por nuestros 3 meses 💕</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 4: 90 RAZONES CÓSMICAS PARA AMARTE (UNA POR CADA DÍA)
+       ============================================================ -->
+  <div id="reasons-modal" class="custom-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="reasons-backdrop"></div>
+    <div class="modal-card reasons-card glass-panel">
+      <button id="close-reasons-btn" class="close-modal-btn" aria-label="Cerrar">&times;</button>
+      
+      <div class="card-badge">💖 90 Razones Cósmicas Para Amarte</div>
+      <h3 class="reason-number" id="reason-number">Razón #1 de 90</h3>
+      <div class="reasons-anniversary-subtitle">
+        ✨ Una razón por cada uno de nuestros 90+ días de amor (Jose & Tamy) 💫
+      </div>
+      
+      <div class="reason-box">
+        <div class="quote-mark-left">“</div>
+        <p class="reason-content" id="reason-text">Por tu sonrisa radiante que tiene la fuerza gravitacional de alegrar todo mi día.</p>
+        <div class="quote-mark-right">”</div>
+      </div>
+
+      <div class="reasons-navigation">
+        <button id="prev-reason-btn" class="reason-nav-btn">◀ Anterior</button>
+        <button id="random-reason-btn" class="reason-random-btn">🎲 Sorpréndeme</button>
+        <button id="next-reason-btn" class="reason-nav-btn">Siguiente ▶</button>
+      </div>
+
+      <div class="reasons-progress-container">
+        <div class="reasons-progress-bar" id="reasons-progress" style="width: 1.1%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL 5: LAS 3 CONSTELACIONES DEL AMOR (MES 1, MES 2, MES 3)
+       ============================================================ -->
+  <div id="constellations-modal" class="custom-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="constellations-backdrop"></div>
+    <div class="modal-card constellations-card glass-panel">
+      <button id="close-constellations-btn" class="close-modal-btn" aria-label="Cerrar">&times;</button>
+      
+      <div class="card-badge">🌌 El Mapa de Nuestro Tiempo</div>
+      <h2 class="modal-heading">Las 3 Constelaciones de Nuestros 3 Meses ✨</h2>
+      <p class="modal-desc">Cada mes a tu lado ha dejado una huella imborrable trazada con estrellas en nuestro cielo nocturno:</p>
+
+      <div class="constellations-grid">
+        <!-- Constelación Mes 1 -->
+        <div class="constellation-box gold-glow" data-month="1">
+          <div class="constellation-header">
+            <span class="constellation-icon">⭐</span>
+            <div>
+              <h3 class="constellation-name">Mes 1: La Chispa Cósmica</h3>
+              <small class="constellation-date">27 de Julio a 27 de Agosto</small>
+            </div>
+          </div>
+          <p class="constellation-p">
+            Aquel 27 nació nuestra supernova. Las primeras miradas tímidas, los primeros mensajes que aceleraban mi corazón y el instante mágico en que supe que eras la persona que había esperado toda mi vida.
+          </p>
+        </div>
+
+        <!-- Constelación Mes 2 -->
+        <div class="constellation-box rose-glow" data-month="2">
+          <div class="constellation-header">
+            <span class="constellation-icon">💫</span>
+            <div>
+              <h3 class="constellation-name">Mes 2: La Danza de la Gravedad</h3>
+              <small class="constellation-date">27 de Agosto a 27 de Septiembre</small>
+            </div>
+          </div>
+          <p class="constellation-p">
+            Dos almas entrando en perfecta sincronía. Risas compartidas hasta tarde, abrazos que curan el alma, complicidad pura y la certeza de que caminar de tu mano es el lugar más bonito de todo el mundo.
+          </p>
+        </div>
+
+        <!-- Constelación Mes 3 -->
+        <div class="constellation-box cyan-glow" data-month="3">
+          <div class="constellation-header">
+            <span class="constellation-icon">💖</span>
+            <div>
+              <h3 class="constellation-name">Mes 3: El Amor Infinito</h3>
+              <small class="constellation-date">27 de Septiembre a 27 de Octubre</small>
+            </div>
+          </div>
+          <p class="constellation-p">
+            ¡Hoy celebramos 3 meses! Un amor consolidado, maduro, dulce y lleno de planes a futuro. 92 días siendo el hombre más afortunado y prometiéndote que este amor seguirá brillando por siempre.
+          </p>
+        </div>
+      </div>
+
+      <button id="view-constellations-in-3d-btn" class="primary-cosmic-btn">
+        <span>🔭 Enfocar Constelaciones en el Universo 3D</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NOTIFICACIÓN FLOTANTE / TOAST CÓSMICO
+       ============================================================ -->
+  <div id="floating-toast" class="floating-toast" role="status" aria-live="polite">
+    <span class="toast-icon" id="toast-icon">✨</span>
+    <span class="toast-text" id="toast-text">¡Mensaje cósmico recibido!</span>
+  </div>
+
+  <!-- ============================================================
+       REPRODUCTOR DE MÚSICA FLOTANTE CÓSMICO
+       ============================================================ -->
+  <div class="cosmic-music-player glass-panel" id="music-player">
+    <div class="player-glow"></div>
+    <div class="planet-disc-wrap" id="music-disc-wrap" title="Pausar / Reproducir">
+      <div class="planet-disc">🪐</div>
+      <div class="satellite-orbit">
+        <span class="satellite">🛰️</span>
+      </div>
+    </div>
+
+    <div class="track-details">
+      <span class="track-tag">Música de Nuestro Amor</span>
+      <span class="track-name" id="track-name">Nuestra Canción Especial ❤️</span>
+      <div class="audio-waves" id="audio-waves">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <button id="play-pause-btn" class="player-toggle-btn" title="Pausar / Reproducir">
+      <span id="play-icon">⏸️</span>
+    </button>
+  </div>
+
+  <!-- Elemento de Audio de Fondo -->
+  <audio id="bg-music" src="musica.mp3" preload="auto" loop></audio>
+
+  <!-- Three.js Library -->
+  <!-- Three.js Library (Local + Respaldo) -->
+  <script src="./three.min.js"></script>
+
+  <!-- Script Principal del Universo -->
+  <script src="./script.js"></script>
+</body>
+</html>
